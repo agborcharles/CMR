@@ -1,0 +1,399 @@
+
+{% extends 'index.html'%}
+
+{% load bootstrap %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{{ form.media }}
+
+{% load crispy_forms_tags %}
+
+
+    {% block content %}
+ 
+    {% include 'Employees/components/pageheading.html'%}
+    <hr>
+
+  {% if messages %}
+      {% for message in messages %}
+          {% if 'info' in message.tags %}
+            <div class="card-panel green lighten-2"> {{message}}</div>
+          {% endif %}
+      {% endfor %}
+{% endif %}
+
+
+      <div id="accordion">
+        <form method="post" >
+          {% csrf_token %}
+      
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <i class="far fa-address-book fa-1x text-300"></i>
+                Personal Data
+              </button>
+            </h5>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <h4>Personal Data</h4>
+                <hr>
+
+                <div class="row">
+                    <div class="col-2">
+                      {{ form.title|bootstrap }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.firstname|bootstrap }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.lastname|bootstrap }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.othername|bootstrap }}
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    {{ form.idcardnumber|bootstrap }}
+                  </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-header" id="headingDemographics">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseDemographics" aria-expanded="false" aria-controls="collapseDemographics">
+                <i class="fas fa-globe fa-1x text-300"></i>
+                Demographics
+              </button>
+            </h5>
+          </div>
+
+          <div id="collapseDemographics" class="collapse" aria-labelledby="headingDemographics" data-parent="#accordion">
+            <div class="card-body">
+              <h4>Demographics</h4>
+                <hr>
+                <div class="row">
+                    <div class="col-2">
+                      {{ form.sex|bootstrap }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.birthday|bootstrap }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.place_of_birth|bootstrap }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.tribe|bootstrap }}
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    {{ form.religion|bootstrap }}
+                  </div>
+                  <div class="col-4">
+                    {{ form.nationality|bootstrap }}
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      
+
+      <div class="card">
+        <div class="card-header" id="headingContact">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseContact" aria-expanded="false" aria-controls="collapseContact">
+              <i class="fas fa-phone-alt fa-1x text-300"></i>
+              Contact
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseContact" class="collapse" aria-labelledby="headingContact" data-parent="#accordion">
+          <div class="card-body">
+            <h4>Contact</h4>
+            <hr>
+            <div class="row">
+                <div class="col-4">
+                  {{ form.tel|bootstrap }}
+                </div>
+                <div class="col-4">
+                  {{ form.tel2|bootstrap }}
+                </div>
+                <div class="col-4">
+                  {{ form.email|bootstrap }}
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                {{ form.bio|bootstrap }}
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingAddress">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAddress" aria-expanded="false" aria-controls="collapseAddress">
+            <i class="fas fa-map-marker-alt fa-1x text-300"></i>
+            Address
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapseAddress" class="collapse" aria-labelledby="headingAddress" data-parent="#accordion">
+        <div class="card-body">
+          <h4>Address</h4>
+          <hr>
+          <div class="row">
+              <div class="col-4">
+                {{ form.hometown|bootstrap }}
+              </div>
+              <div class="col-4">
+                {{ form.region|bootstrap }}
+              </div>
+              <div class="col-4">
+                {{ form.quarter|bootstrap }}
+              </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-12">
+              {{ form.address|bootstrap }}
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingEducation">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEducation" aria-expanded="false" aria-controls="collapseEducation">
+          <i class="fas fa-user-graduate fa-1x text-300"></i>
+          Education
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseEducation" class="collapse" aria-labelledby="headingEducation" data-parent="#accordion">
+      <div class="card-body">
+        <h4>Education</h4>
+        <hr>
+        <div class="row">
+          <div class="col-4">
+            {{ form.education|bootstrap }}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="card">
+  <div class="card-header" id="headingWorkingExperience">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseWorkingExperience" aria-expanded="false" aria-controls="collapseWorkingExperience">
+        <i class="fas fa-tools fa-1x text-300"></i>
+        Previous Working Experience
+      </button>
+    </h5>
+  </div>
+
+  <div id="collapseWorkingExperience" class="collapse" aria-labelledby="headingWorkingExperience" data-parent="#accordion">
+    <div class="card-body">
+      <h4>Previous Working Experience</h4>
+      <hr>
+      <div class="row">
+          <div class="col-3">
+            {{ form.lastwork|bootstrap }}
+          </div>
+          <div class="col-3">
+            {{ form.previous_employer|bootstrap }}
+          </div>
+          <div class="col-3">
+            {{ form.position|bootstrap }}
+          </div>
+          <div class="col-3">
+            {{ form.location|bootstrap }}
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          {{ form.type_of_work|bootstrap }}
+        </div>
+        <div class="col-3">
+          {{ form.other_experiences|bootstrap }}
+        </div>
+        <div class="col-3">
+          {{ form.reasons_for_termination|bootstrap }}
+        </div>
+        <div class="col-3">
+          {{ form.ssnitnumber|bootstrap }}
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-header" id="headingCompanyData">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseCompanyData" aria-expanded="false" aria-controls="collapseCompanyData">
+        <i class="fas fa-building fa-1x text-300"></i>
+        Company Data
+      </button>
+    </h5>
+  </div>
+
+  <div id="collapseCompanyData" class="collapse" aria-labelledby="headingCompanyData" data-parent="#accordion">
+    <div class="card-body">
+      <h4>Company Data</h4>
+      <hr>
+      <div class="row">
+          <div class="col-3">
+            {{ form.department|bootstrap }}
+          </div>
+          <div class="col-3">
+            {{ form.role|bootstrap }}
+          </div>
+          <div class="col-3">
+            {{ form.employeetype|bootstrap }}
+          </div>
+          <div class="col-3">
+            {{ form.employeeid|bootstrap }}
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          {{ form.startdate|bootstrap }}
+        </div>
+        <div class="col-3">
+          {{ form.enddate|bootstrap }}
+        </div>
+        <div class="col-3">
+          {{ form.dateissued|bootstrap }}
+        </div>
+        <div class="col-3">
+          {{ form.employeeid|bootstrap }}
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        {{ form.salary|bootstrap }}
+      </div>
+      <div class="col-3">
+        {{ form.status|bootstrap }}
+      </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="card">
+  <div class="card-header" id="headingEmergencyContact1">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEmergencyContact1" aria-expanded="false" aria-controls="collapseEmergencyContact1">
+        <i class="fas fa-ambulance fa-1x text-300"></i>
+        Emergency Contact 1
+      </button>
+    </h5>
+  </div>
+
+  <div id="collapseEmergencyContact1" class="collapse" aria-labelledby="headingEmergencyContact1" data-parent="#accordion">
+    <div class="card-body">
+      <h4>Emergency Contact 1 </h4>
+      <hr>
+      <div class="row">
+          <div class="col-4">
+            {{ form.fullname1|bootstrap }}
+          </div>
+          <div class="col-4">
+            {{ form.tel1|bootstrap }}
+          </div>
+          <div class="col-4">
+            {{ form.relationship1|bootstrap }}
+          </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          {{ form.place_of_residence1|bootstrap }}
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="card">
+  <div class="card-header" id="headingEmergencyContact2">
+    <h5 class="mb-0">
+      <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEmergencyContact2" aria-expanded="false" aria-controls="collapseEmergencyContact2">
+        <i class="fas fa-ambulance fa-1x text-300"></i>
+        Emergency Contact 2
+      </button>
+    </h5>
+  </div>
+
+  <div id="collapseEmergencyContact2" class="collapse" aria-labelledby="headingEmergencyContact2" data-parent="#accordion">
+      <div class="card-body">
+        
+      <h4>Emergency Contact 2 </h4>
+      <hr>
+      <div class="row">
+          <div class="col-4">
+            {{ form.fullname2|bootstrap }}
+          </div>
+          <div class="col-4">
+            {{ form.tel3|bootstrap }}
+          </div>
+          <div class="col-4">
+            {{ form.relationship2|bootstrap }}
+          </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          {{ form.place_of_residence2|bootstrap }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <button type="submit" class="btn btn-success">Save person</button>
+    </form>
+    <br>
+</div>
+
+
+
+    
+
+
+  {% endblock %}

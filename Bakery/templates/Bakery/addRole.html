@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load materializecss %}
+
+{% block css %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
+{% endblock css %}
+
+{% block title %}
+{% endblock title %}
+
+
+
+{% block content %}
+
+{% if messages %}
+
+  {% for message in messages %}
+      {% if 'info' in message.tags %}
+        <div class="card-panel green lighten-2"> {{message}}</div>
+      {% endif %}
+  {% endfor %}
+
+{% endif %}
+
+<h1>Create Roles</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s4">
+            {{ form.name|materializecss}}
+        </div>
+
+        <div class="input-field col s8">
+              {{ form.description|materializecss }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s4">
+                {{ form.is_active|materializecss }}
+          </div>
+        </div>
+      </div>
+
+<br>
+  <button type="submit" class="waves-effect waves light btn-small">Register</button>
+</form>
+
+{% endblock content %}

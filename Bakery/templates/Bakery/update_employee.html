@@ -1,0 +1,237 @@
+
+{% extends 'index.html'%}
+
+{% load crispy_forms_tags %}
+
+
+    {% block content %}
+ 
+    {% include 'Employees/components/pageheading.html'%}
+    <hr>
+
+
+        <form method="post" >
+          {% csrf_token %}
+      
+              <h4>Personal Data</h4>
+                <hr>
+
+                <div class="row">
+                    <div class="col-2">
+                      {{ form.title|as_crispy_field }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.firstname|as_crispy_field }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.lastname|as_crispy_field }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.othername|as_crispy_field }}
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    {{ form.idcardnumber|as_crispy_field }}
+                  </div>
+              </div>
+
+              <h4>Demographics</h4>
+                <hr>
+                <div class="row">
+                    <div class="col-2">
+                      {{ form.sex|as_crispy_field }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.birthday|as_crispy_field }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.place_of_birth|as_crispy_field }}
+                    </div>
+                    <div class="col-3">
+                      {{ form.tribe|as_crispy_field }}
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+                    {{ form.religion|as_crispy_field }}
+                  </div>
+                  <div class="col-4">
+                    {{ form.nationality|as_crispy_field }}
+                  </div>
+              </div>
+
+
+            <h4>Contact</h4>
+            <hr>
+            <div class="row">
+                <div class="col-4">
+                  {{ form.tel|as_crispy_field }}
+                </div>
+                <div class="col-4">
+                  {{ form.tel2|as_crispy_field }}
+                </div>
+                <div class="col-4">
+                  {{ form.email|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                {{ form.bio|as_crispy_field }}
+              </div>
+            </div>
+
+          <h4>Address</h4>
+          <hr>
+          <div class="row">
+              <div class="col-4">
+                {{ form.hometown|as_crispy_field }}
+              </div>
+              <div class="col-4">
+                {{ form.region|as_crispy_field }}
+              </div>
+              <div class="col-4">
+                {{ form.quarter|as_crispy_field }}
+              </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-12">
+              {{ form.address|as_crispy_field }}
+            </div>
+          </div>
+
+
+
+        <h4>Education</h4>
+        <hr>
+        <div class="row">
+          <div class="col-4">
+            {{ form.education|as_crispy_field }}
+          </div>
+        </div>
+
+      <h4>Previous Working Experience</h4>
+      <hr>
+      <div class="row">
+          <div class="col-3">
+            {{ form.lastwork|as_crispy_field }}
+          </div>
+          <div class="col-3">
+            {{ form.previous_employer|as_crispy_field }}
+          </div>
+          <div class="col-3">
+            {{ form.position|as_crispy_field }}
+          </div>
+          <div class="col-3">
+            {{ form.location|as_crispy_field }}
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          {{ form.type_of_work|as_crispy_field }}
+        </div>
+        <div class="col-3">
+          {{ form.other_experiences|as_crispy_field }}
+        </div>
+        <div class="col-3">
+          {{ form.reasons_for_termination|as_crispy_field }}
+        </div>
+        <div class="col-3">
+          {{ form.ssnitnumber|as_crispy_field }}
+        </div>
+    </div>
+
+      <h4>Company Data</h4>
+      <hr>
+      <div class="row">
+          <div class="col-3">
+            {{ form.department|as_crispy_field }}
+          </div>
+          <div class="col-3">
+            {{ form.role|as_crispy_field }}
+          </div>
+          <div class="col-3">
+            {{ form.employeetype|as_crispy_field }}
+          </div>
+          <div class="col-3">
+            {{ form.employeeid|as_crispy_field }}
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          {{ form.startdate|as_crispy_field }}
+        </div>
+        <div class="col-3">
+          {{ form.enddate|as_crispy_field }}
+        </div>
+        <div class="col-3">
+          {{ form.dateissued|as_crispy_field }}
+        </div>
+        <div class="col-3">
+          {{ form.employeeid|as_crispy_field }}
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        {{ form.salary|as_crispy_field }}
+      </div>
+      <div class="col-3">
+        {{ form.status|as_crispy_field }}
+      </div>
+  </div>
+
+      <h4>Emergency Contact 1 </h4>
+      <hr>
+      <div class="row">
+          <div class="col-4">
+            {{ form.fullname1|as_crispy_field }}
+          </div>
+          <div class="col-4">
+            {{ form.tel1|as_crispy_field }}
+          </div>
+          <div class="col-4">
+            {{ form.relationship1|as_crispy_field }}
+          </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          {{ form.place_of_residence1|as_crispy_field }}
+        </div>
+    </div>
+ 
+      <h4>Emergency Contact 2 </h4>
+      <hr>
+      <div class="row">
+          <div class="col-4">
+            {{ form.fullname2|as_crispy_field }}
+          </div>
+          <div class="col-4">
+            {{ form.tel3|as_crispy_field }}
+          </div>
+          <div class="col-4">
+            {{ form.relationship2|as_crispy_field }}
+          </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          {{ form.place_of_residence2|as_crispy_field }}
+            </div>
+          </div>
+  
+    <hr>
+
+    <button type="submit" class="btn btn-success">Save person</button>
+    </form>
+    <br>
+        
+  {% endblock %}

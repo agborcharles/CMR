@@ -1,0 +1,97 @@
+{% extends 'base_offline.html' %}
+{% load materializecss %}
+{% load static %}
+
+{% block css %}
+
+{% endblock css %}
+
+{% block title %}
+{% endblock title %}
+
+
+
+{% block content %}
+
+{% if messages %}
+
+  {% for message in messages %}
+      {% if 'info' in message.tags %}
+        <div class="card-panel green lighten-2"> {{message}}</div>
+      {% endif %}
+  {% endfor %}
+
+{% endif %}
+
+<h3>Create Department</h3>
+<hr>
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+            {{ form.parent|materializecss}}
+        </div>
+
+        <div class="input-field col s6">
+              {{ form.name|materializecss }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+
+          <div class="input-field col s12">
+                {{ form.description|materializecss }}
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+
+            <div class="input-field col s4">
+                  {{ form.is_active|materializecss }}
+            </div>
+
+          </div>
+        </div>
+
+<br>
+  <button type="submit" class="waves-effect waves light btn-small">Register</button>
+</form>
+
+<hr>
+
+
+
+
+
+
+{% endblock content %}
+
+{% block javascript %}
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js" integrity="sha256-SrBfGi+Zp2LhAvy9M1bWOCXztRU9Ztztxmu5BcYPcPE=" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function(){
+
+  // Initialize materialize data picker
+  $('.datepicker').datepicker({'format': 'yyyy-mm-dd'});
+  $('select').formSelect();
+
+});
+</script>
+
+{% endblock javascript %}
